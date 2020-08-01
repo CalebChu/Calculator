@@ -1,6 +1,6 @@
 import time
 import sys
-timeout = time.time() + 2
+
 def Calculating (Results):
     print('\rCalculating', end=" ")
     sys.stdout.flush()
@@ -25,11 +25,13 @@ def getNumber(message):
     validInput = False
     while validInput == False:
         userChoice = input(message)
-        if userChoice.isnumeric():
+        try:
+            userChoiceToNum = float(userChoice)
             validInput = True
-        else:
+        except:
             print("Please enter a valid number.")
-    return float(userChoice)
+    return userChoiceToNum
+
 
 def getOperation(message):
     validInput = False
@@ -45,9 +47,9 @@ def getOperation(message):
 
 
 def calculator():
-    operationInput = getOperation("Please choose from one of the following characters and enter it below: + , * , / , -\n")
     userNum1 = getNumber("Enter a number here:")
     userNum2 = getNumber("Enter another number here:")
+    operationInput = getOperation("Please choose from one of the following characters and enter it below: + , * , / , -\n")
 
     if operationInput == ("+"):
         Result = userNum1 + userNum2
