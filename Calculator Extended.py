@@ -20,66 +20,50 @@ def Calculating (Results):
 
     print('\r', Results, end=" ")
 
+
+def getNumber(message):
+    validInput = False
+    while validInput == False:
+        userChoice = input(message)
+        if userChoice.isnumeric():
+            validInput = True
+        else:
+            print("Please enter a valid number.")
+    return float(userChoice)
+
+def getOperation(message):
+    validInput = False
+    operatorList = ["+","-","*","/"]
+    while validInput == False:
+        userChoice = input(message)
+        if userChoice in operatorList:
+            validInput = True
+        else:
+            print("Please enter a valid operation.")
+    return userChoice
+
+
+
 def calculator():
-    print ("Please choose from one of the following characters and enter it below: + , * , / , -")
-    uInput = input("Here:")
+    operationInput = getOperation("Please choose from one of the following characters and enter it below: + , * , / , -\n")
+    userNum1 = getNumber("Enter a number here:")
+    userNum2 = getNumber("Enter another number here:")
 
-    if uInput == ("+"):
-        try:
-            uInput1 = input("Enter a number here:")
-            userNum1 = float(uInput1)
-
-            uInput2 = input("Enter another number here:")
-            userNum2 = float(uInput2)
-        except:
-            print("Please enter a valid number!")
-            calculator()
+    if operationInput == ("+"):
+        Result = userNum1 + userNum2
+    elif operationInput == ("*"):
+        Result = userNum1 * userNum2
+    elif operationInput == ("-"):
+        Result = userNum1 - userNum2
+    elif operationInput == ("/"):
+        if userNum2 != 0:
+            Result = userNum1 / userNum2
         else:
-            Result1 = userNum1 + userNum2
-            Calculating(Result1)
-    elif uInput == ("*"):
-        try:
-            uInput1 = input("Enter a number here:")
-            userNum1 = float(uInput1)
-
-            uInput2 = input("Enter another number here:")
-            userNum2 = float(uInput2)
-        except:
-            print("Please enter a valid number!")
-            calculator()
-        else:
-            Result2 = userNum1 * userNum2
-            Calculating(Result2)
-    elif uInput == ("/"):
-
-        uInput1 = input("Enter a number here:")
-        userNum1 = float(uInput1)
-
-        uInput2 = input("Enter another number here:")
-        userNum2 = float(uInput2)
-        if userNum2 == 0:
-            Calculating()
-            print("\n",userNum1,"/0 is undefined, please try something else.")
-            calculator()
-        else:
-            Result3 = userNum1 / userNum2
-            Calculating(Result3)
-    elif uInput == ("-"):
-        try:
-            uInput1 = input("Enter a number here:")
-            userNum1 = float(uInput1)
-
-            uInput2 = input("Enter another number here:")
-            userNum2 = float(uInput2)
-        except:
-            print("Please enter a valid number!")
-            calculator()
-        else:
-            Result4 = userNum1 - userNum2
-            Calculating(Result4)
+            print(userNum1, "/0 is undefined, please try something else.")
     else:
        print("Please enter a character from the list.")
-       calculator()
+    Calculating(Result)
+
 
 def yesNoQuestion(question):
 
