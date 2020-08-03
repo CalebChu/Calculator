@@ -48,8 +48,8 @@ def getOperation(message):
 
 def calculator():
     userNum1 = getNumber("Enter a number here:")
-    userNum2 = getNumber("Enter another number here:")
     operationInput = getOperation("Please choose from one of the following characters and enter it below: + , * , / , -\n")
+    userNum2 = getNumber("Enter another number here:")
 
     if operationInput == ("+"):
         Result = userNum1 + userNum2
